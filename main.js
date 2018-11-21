@@ -50,7 +50,7 @@ new Vue
   },
   /*
       flitrador por nombre
-  */
+  
   computed:
   {
     filtro: function()
@@ -65,4 +65,4 @@ new Vue
       }
     }
   }
-})
+*/})

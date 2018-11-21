@@ -42,8 +42,10 @@
             <input type="text" placeholder="Busqueda por nombre" v-model="busqueda" class="form-control">
           </div>
         </div>
-        <hr>
-        <div id="info" class="panel panel-primary" v-for="(cliente,contador) in clientes" v-show="cumpleFiltro(cliente.name.first+cliente.name.last)">
+      <hr>
+<div class="row">
+    <div class="col-sm-12 col-md-4" v-for="(cliente,contador) in clientes" v-show="cumpleFiltro(cliente.name.first+cliente.name.last)">
+        <div id="info" class="panel panel-primary" >
           <div class="panel-heading"> Cliente </div>
           <div class="panel-body">
                <img v-bind:src="cliente.picture.large" align="left">
@@ -54,12 +56,14 @@
                <h5 v-if="ciudad">&nbsp; Ciudad: {{ cliente.location.city}}</h5>
                <h5>&nbsp; Telefono: {{ cliente.phone}}</h5>
                <h5>&nbsp; Celular: {{ cliente.cell}}</h5>
-          </div>
+              </div>
+ </div>
           <div class="panel-footer">
             <button type="button" name="button" class="btn btn-primary" v-on:click="aceptar(contador)">Aceptado</button>
             <button type="button" name="button" class="btn btn-primary" v-on:click="rechazar(contador)">Rechazado</button>
           </div>
         </div>
+      </div>
         <br><br><br>
         <div class="navbar navbar-inverse navbar-fixed-bottom">
           <h3 style="color: white; 
