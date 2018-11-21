@@ -1,0 +1,19 @@
+.info {
+    text-align: center;
+}
+
+.primero {
+    color:blue; 
+    font-weight: bolder;
+    text-align: center;
+}
+
+h3 .footerfin {
+    color: white; 
+    text-align: center;
+}
+
+#info{
+    background-color: black;
+    color: white;
+}

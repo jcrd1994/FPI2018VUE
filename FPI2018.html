@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content=" initial-scale=1.0">
+    <title>ParcialFPI 3--vue</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos.css" >
+  </head>
+  <body>
+    <div id="principal" class="container">
+      <div class="container">
+        
+        <br><br><br>
+        <div>
+            <h1 id="primero" >Sistema de Ofertas Por Llamadas Telefonicas</h1>
+        </div>
+        <hr>
+        <div class="">
+          <h3>Cantidad de clientes: {{ cantidad }}</h3>
+          <input type="range" max="50" min="3" v-model="cantidad">
+          <br>
+          <button type="button" name="button" v-on:click="traer" class="btn btn-primary">Obtener</button>
+        </div>
+        <hr>
+        <div class="">
+          <h3 style="text-align: center;">Informacion a mostrar</h3>
+          <div class="info">
+          <input type="checkbox"  v-model="titulo" :value="true" > Titulo
+          <input type="checkbox"  v-model="nombre" :value="true"> Nombre
+          <input type="checkbox"  v-model="apellido" :value="true"> Apellido
+          <br>
+          <input type="checkbox"  v-model="genero" :value="true"> Genero
+          <input type="checkbox"  v-model="correo" :value="true"> E-mail
+          <input type="checkbox"  v-model="ciudad" :value="true"> Ciudad
+        </div>
+        </div>
+        <hr>
+        <div class="hidden-xs hidden-sm">
+          <h3>Buscar clientes: </h3>
+          <div>
+            <input type="text" placeholder="Busqueda por nombre" v-model="busqueda" class="form-control">
+          </div>
+        </div>
+        <hr>
+        <div id="info" class="panel panel-primary" v-for="(cliente,contador) in clientes" v-show="cumpleFiltro(cliente.name.first+cliente.name.last)">
+          <div class="panel-heading"> Cliente </div>
+          <div class="panel-body">
+               <img v-bind:src="cliente.picture.large" align="left">
+               <h5 v-if="nombre">&nbsp; Nombre: <span v-if="titulo">{{ cliente.name.title }} </span> {{ cliente.name.first }} </h5>
+               <h5 v-if="apellido">&nbsp; Apellido: {{ cliente.name.last}}</h5>
+               <h5 v-if="genero">&nbsp; Genero: {{ cliente.gender}}</h5>
+               <h5 v-if="correo">&nbsp; Correo: {{ cliente.email}}</h5>
+               <h5 v-if="ciudad">&nbsp; Ciudad: {{ cliente.location.city}}</h5>
+               <h5>&nbsp; Telefono: {{ cliente.phone}}</h5>
+               <h5>&nbsp; Celular: {{ cliente.cell}}</h5>
+          </div>
+          <div class="panel-footer">
+            <button type="button" name="button" class="btn btn-primary" v-on:click="aceptar(contador)">Aceptado</button>
+            <button type="button" name="button" class="btn btn-primary" v-on:click="rechazar(contador)">Rechazado</button>
+          </div>
+        </div>
+        <br><br><br>
+        <div class="navbar navbar-inverse navbar-fixed-bottom">
+          <h3 style="color: white; 
+          text-align: center;"> Rechazados: {{ rechazados}} Aceptados: {{aceptados}} </h3>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
