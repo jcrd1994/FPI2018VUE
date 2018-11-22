@@ -48,21 +48,4 @@ new Vue
       }
     },
   },
-  /*
-      flitrador por nombre
-  
-  computed:
-  {
-    filtro: function()
-    {
-      if (this.clientes != null)
-      {
-        return this.clientes.filter(cliente =>
-          {
-          return cliente.name.first.toLowerCase().includes(this.busqueda.toLowerCase())+
-          cliente.name.last.toLowerCase().includes(this.busqueda.toLowerCase());
-        });
-      }
-    }
-  }
-*/})
+ })
